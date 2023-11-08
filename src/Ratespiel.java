@@ -13,8 +13,11 @@ public class Ratespiel {
                 System.out.println("Jawoll, die Zahl ist richtig!");
                 break;
             }
+            else if (zahl > geheime_zahl ) {
+                System.out.println("Die Zahl ist zu groß");
+            }
             else {
-                System.out.println("Das war leider die falsche Zahl");
+                System.out.println("Die Zahl ist zu klein");
             }
         }
     }
