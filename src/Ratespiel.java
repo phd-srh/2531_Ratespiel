@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Ratespiel {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
-        int geheime_zahl = 37;
+        int geheime_zahl = (int)(Math.random() * 90 + 10);
 
         while (true) {
             System.out.print("Wie lautet die Zahl: ");
