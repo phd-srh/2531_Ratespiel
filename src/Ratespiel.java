@@ -3,8 +3,9 @@ import java.util.Scanner;
 public class Ratespiel {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
-        int geheime_zahl = (int)(Math.random() * 9000 + 1000);
+        int geheime_zahl = (int)(Math.random() * 900 + 100);
 
+        //System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Wie lautet die Zahl: ");
@@ -19,7 +20,16 @@ public class Ratespiel {
             // Anzahl korrekter Ziffern bestimmen (siehe Struktogramm)
             int korrekteZiffern = 0;
 
-            // TODO
+            int gesuchteZahl = geheime_zahl;
+            while ( gesuchteZahl > 0 ) {
+                int zifferGeheimeZahl = gesuchteZahl % 10;
+                int zifferTipp = zahl % 10;
+                if (zifferGeheimeZahl == zifferTipp) {
+                    korrekteZiffern++;
+                }
+                gesuchteZahl = gesuchteZahl / 10;
+                zahl = zahl / 10;
+            }
 
             System.out.println("Es sind " + korrekteZiffern + " korrekte Ziffern");
         }
