@@ -26,7 +26,12 @@ public class Ratespiel {
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht");
     }
 
-    private static int bestimmeVorhandeneZiffern(int geheime_zahl, int zahl) {
+    public static boolean istZifferInZahl(int ziffer, int zahl) {
+        // TODO
+        return false;
+    }
+
+    public static int bestimmeVorhandeneZiffern(int geheime_zahl, int zahl) {
         // TODO
         return 0;
     }
