@@ -5,9 +5,11 @@ public class Ratespiel {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-        System.out.print("Wie viele Zahlen solle erraten werden (3-7): ");
-        int schwierigkeitsgrad = eingabe.nextInt();
-
+        int schwierigkeitsgrad;
+        do {
+            System.out.print("Wie viele Zahlen sollen erraten werden (3-7): ");
+            schwierigkeitsgrad = eingabe.nextInt();
+        } while (schwierigkeitsgrad < 3 || schwierigkeitsgrad > 7);
 
         int geheime_zahl;
         do {
