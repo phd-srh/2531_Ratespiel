@@ -4,9 +4,13 @@ public class Ratespiel {
 
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
-        final int geheime_zahl = (int)(Math.random() * 900 + 100);
 
-        //System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
+        int geheime_zahl;
+        do {
+            geheime_zahl = (int) (Math.random() * 900 + 100);
+        } while ( keineZifferIstDoppelt(geheime_zahl) );
+
+        System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Wie lautet die Zahl: ");
@@ -17,6 +21,10 @@ public class Ratespiel {
                 break;
             }
             anzahlVersuche++;
+            if (zahl == geheime_zahl) {
+                System.out.println("Herzlichen Glückwunsch, das war die gesuchte Zahl");
+                break;
+            }
 
             int korrekteZiffern = bestimmeKorrekteZiffern(geheime_zahl, zahl);
             int vorhandeneZiffern = bestimmeVorhandeneZiffern(geheime_zahl, zahl);
@@ -25,6 +33,11 @@ public class Ratespiel {
             System.out.println("Es sind " + vorhandeneZiffern + " Ziffern vorhanden");
         }
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht");
+    }
+
+    public static boolean keineZifferIstDoppelt(int geheime_zahl) {
+        // TODO
+        return false;
     }
 
     public static boolean istZifferInZahl(int ziffer, int zahl) {
