@@ -5,12 +5,16 @@ public class Ratespiel {
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
+        System.out.print("Wie viele Zahlen solle erraten werden (3-7): ");
+        int schwierigkeitsgrad = eingabe.nextInt();
+
+
         int geheime_zahl;
         do {
             geheime_zahl = (int) (Math.random() * 900 + 100);
         } while ( ! keineZifferIstDoppelt(geheime_zahl) );
 
-        System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
+//        System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
         int anzahlVersuche = 0;
         while (true) {
             System.out.print("Wie lautet die Zahl: ");
