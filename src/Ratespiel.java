@@ -20,6 +20,7 @@ public class Ratespiel {
 
             int korrekteZiffern = bestimmeKorrekteZiffern(geheime_zahl, zahl);
             int vorhandeneZiffern = bestimmeVorhandeneZiffern(geheime_zahl, zahl);
+            vorhandeneZiffern = vorhandeneZiffern - korrekteZiffern;
             System.out.println("Es sind " + korrekteZiffern + " korrekte Ziffern");
             System.out.println("Es sind " + vorhandeneZiffern + " Ziffern vorhanden");
         }
@@ -27,13 +28,26 @@ public class Ratespiel {
     }
 
     public static boolean istZifferInZahl(int ziffer, int zahl) {
-        // TODO
+        while ( zahl > 0 ) {
+            int zifferDerZahl = zahl % 10;
+            if (ziffer == zifferDerZahl) {
+                return true;
+            }
+            zahl = zahl / 10;
+        }
         return false;
     }
 
     public static int bestimmeVorhandeneZiffern(int geheime_zahl, int zahl) {
-        // TODO
-        return 0;
+        int vorhandeneZiffern = 0;
+        while ( zahl > 0 ) {
+            int zifferDerZahl = zahl % 10;
+            if ( istZifferInZahl(zifferDerZahl, geheime_zahl) ) {
+                vorhandeneZiffern++;
+            }
+            zahl = zahl / 10;
+        }
+        return vorhandeneZiffern;
     }
 
     // Achtung: (Call-By-Value) Die Parameter sind Kopien(!!) der verwendeten Variablen
