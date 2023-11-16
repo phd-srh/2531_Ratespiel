@@ -8,7 +8,7 @@ public class Ratespiel {
         int geheime_zahl;
         do {
             geheime_zahl = (int) (Math.random() * 900 + 100);
-        } while ( keineZifferIstDoppelt(geheime_zahl) );
+        } while ( ! keineZifferIstDoppelt(geheime_zahl) );
 
         System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
         int anzahlVersuche = 0;
@@ -36,8 +36,13 @@ public class Ratespiel {
     }
 
     public static boolean keineZifferIstDoppelt(int geheime_zahl) {
-        // TODO
-        return false;
+        int gefundeneZiffern = 0;
+        for (int ziffer = 0; ziffer <= 9; ziffer++) {
+            if ( istZifferInZahl(ziffer, geheime_zahl) ) {
+                 gefundeneZiffern++;
+            }
+        }
+        return gefundeneZiffern == 3;
     }
 
     public static boolean istZifferInZahl(int ziffer, int zahl) {
