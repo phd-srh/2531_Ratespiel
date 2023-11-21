@@ -2,19 +2,24 @@ import java.util.Scanner;
 
 public class Ratespiel {
 
+    // hier wäre die Stelle für eine "globale" Variable
+    //int schwierigkeitsgrad; // könnten wir, ist aber kein guter Stil
+
     public static void main(String[] args) {
         Scanner eingabe = new Scanner(System.in);
 
-        int schwierigkeitsgrad;
+        int schwierigkeitsgrad; // lokale Variable
         do {
             System.out.print("Wie viele Zahlen sollen erraten werden (3-7): ");
             schwierigkeitsgrad = eingabe.nextInt();
         } while (schwierigkeitsgrad < 3 || schwierigkeitsgrad > 7);
 
         int geheime_zahl;
+        int suchRaum = (int)Math.pow(10, schwierigkeitsgrad);
+        int startwert = (int)Math.pow(10, schwierigkeitsgrad-1);
         do {
-            geheime_zahl = (int) (Math.random() * 900 + 100);
-        } while ( ! keineZifferIstDoppelt(geheime_zahl) );
+            geheime_zahl = (int) (Math.random() * (suchRaum - startwert) + startwert);
+        } while ( ! keineZifferIstDoppelt(geheime_zahl, schwierigkeitsgrad) );
 
 //        System.out.println("Achtung, nur zum Testen! Geheime Zahl = " + geheime_zahl);
         int anzahlVersuche = 0;
@@ -41,14 +46,14 @@ public class Ratespiel {
         System.out.println("Sie haben " + anzahlVersuche + " Versuche gebraucht");
     }
 
-    public static boolean keineZifferIstDoppelt(int geheime_zahl) {
+    public static boolean keineZifferIstDoppelt(int geheime_zahl, int schwierigkeitsgrad) {
         int gefundeneZiffern = 0;
         for (int ziffer = 0; ziffer <= 9; ziffer++) {
             if ( istZifferInZahl(ziffer, geheime_zahl) ) {
                  gefundeneZiffern++;
             }
         }
-        return gefundeneZiffern == 3;
+        return gefundeneZiffern == schwierigkeitsgrad;
     }
 
     public static boolean istZifferInZahl(int ziffer, int zahl) {
